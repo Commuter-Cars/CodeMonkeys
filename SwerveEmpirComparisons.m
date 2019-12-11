@@ -19,7 +19,7 @@
 % C= Constant Coefficient motorcyles= .3, the minimum value suggested by Limpert
 % fy=Turning lateral acceleration motorcycles (g-units) max possible suggested by Limpert
 clear all;
-C=.300; % Limperts maximum value for extreme motorcyle preformance
+%C=.300; % Limperts maximum value for extreme motorcyle preformance
 C1=.45; % Limperts recomened value for motorcycles
 Ce=2.78; %G.Zovak Constant
 mu=.8; 
@@ -41,11 +41,8 @@ Xe=Ce.*V.*sqrt((L)./(g.*mu)); % ft G.Zovak 4-Wheeled Vehicles
 
 X1=C1.*V.*(sqrt(L./fy)); % ft Limperts recomended C value .45
 
-X2=C2.*V.*(sqrt(L./ay)); % Limperts Recomended 4-Wheeled Vehicle Equation with ay=.72g
-% Note: .72g is based on G.Zovak study on the average peak lateral acceleration for
-% 4-Wheeled vehicles lane change manuvers. interestingly when Limperts equaion is 
-% Plotted with this value it very closly matches G.Zovaks equation. which I belive 
-% is a very good sign.
+X2=C2.*V.*(sqrt(L./ay)); % Limperts Recomended 4-Wheeled Vehicle Equation with 85percent
+% of maximum lateral acceleration (limperts Recomended)
 
 %Xc=sqrt((4.*V.^2.*L)./(mu.*g)-L.^2); % 4-Wheeled Vehicle emergency turn simplied equations 
 %used for crash reconstruction From a paper written by Jon Neades Note: Based on 
