@@ -4,7 +4,7 @@
 % the conduction of said manuever, details on the different equations and thier 
 % Origin are shown below.
 
-% Daily's Equation for Critical Turnaway distance (4-Wheeled vehcles)
+% Frick's Equation for Critical Turnaway distance (4-Wheeled vehcles)
 % Xd=V.*sqrt((2.*dy)/(mu.*g)) 
 % Where
 % Xd=Longitudinal distance traversed during the turnaway manuever
@@ -74,10 +74,11 @@ Xw=1.15.*mph+11.1; % Wade D. Bartletts equation
 
 y=1.3.*mph+6.833; % Least Squars regression of Shuman Data
 
+
 hold on;
 grid on;
 
-plot(mph,Xd,"color",'b',";4-Wheeled Vehicles (Daily);");
+plot(mph,Xd,"color",'b',";4-Wheeled Vehicles (Frick);");
 plot(mph,Xl,"color",'r',";4-Wheeled Vehicles (Limpert);");
 plot(mph,Xu,"color",'k',";MotorCycles (Limpert);");
 plot(mph,Xw,"color",'g',";MotorCycles (Bartlett);");
@@ -85,4 +86,4 @@ plot(mph,y,"color",'y',";MotorCycles (Shuman Data);");
 xlabel("mi/h");
 ylabel("Longitudinal Distance traveled during Turnaway Manuever ft");
 title("Turnaway Distance vs. Vehicle Speed");
-
+saveas(1,"TurnawayDist","jpg")
