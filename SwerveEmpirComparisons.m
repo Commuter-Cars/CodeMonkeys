@@ -51,9 +51,11 @@ X2=C2.*V.*(sqrt(L./ay)); % Limperts
 
 mph=(60/88).*V;% converting ft/s to miles per hour
 
+r=2.6.*mph-12; % Least Squars Regression line Shuman Data for MotorCycles
 
 hold on ;
 grid on;
+plot(mph,r,"color",'g',";Shuman Data MotorCycles;");
 plot(mph,Xd,"color",'b',";Daily;");
 plot(mph,Xe,"color",'r',";G.Zovak;");
 plot(mph,X2,"color",'k',";Limpert;");
