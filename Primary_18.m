@@ -11,7 +11,7 @@
 % x=13.49 from x=0 to bottom of instrumentation
 % x=12.72 from x=0 top of instramentaion
 clear all;
-clc;
+%clc;
 
 H30=input("Choose the H30 value you wish to Evaluate ") % Prompt user for input on 
 % H30 value, 340 mininmum, and 440 maximum
@@ -54,7 +54,9 @@ Xg=X+ABFR; % Class A vehicle Accomidation Tool Referecne line in The Tengo Cab
 X95g=X95+ABFR; % 95th percentile selected seat postion curve in the Tengo cab Global
 % Cartesian Coordinate system
 
-L40=input("Choose an L40 Angle Value to Evaluate ")
+L40=input("Choose an L40 Angle Value to Evaluate ")% evaluating on the reasonable
+% to the extreme, 25 degrees very common value, 5 degrees is extraordinarly lower
+% and 40 degrees is rediculously high.
 
 % Evaluate the center location of our 95th percentile eyellipses 
 
@@ -84,8 +86,55 @@ I=polyfit(xi,zi,1);
 i=linspace(342.646 ,323.088,100);
 Ii=-4.1604.*i+2052;
 
+alphaminz=4.45295; % The angle value pertaining to the minimum z location on the
+% eyellipses
+
+zmin=Rx.*cos(alphaminz).*sin(theta)+Rz.*sin(alphaminz).*cos(theta)+Cz;
+
+xloczmin=Rx.*cos(alphaminz).*cos(theta)-Rz.*sin(alphaminz).*sin(theta)+Cx;
+
+alphaxmax=6.23287; % The angle value pertaining to the maximum x location on the 
+% eyellipses
+
+xmax=Rx.*cos(alphaxmax).*cos(theta)-Rz.*sin(alphaxmax).*sin(theta)+Cx;
+
+zlocxmax=Rx.*cos(alphaxmax).*sin(theta)+Rz.*sin(alphaxmax).*cos(theta)+Cz;
+
+zp=-406.4;% coresponds to street level in the tangos global carteesian coordinat 
+% System
+xp=xmax-11000;
+
+LPz=[zmin,zp];
+
+LPx=[xloczmin,xp];
+
+alphaxmin=3.09442;
+
+xmin=Rx.*cos(alphaxmin).*cos(theta)-Rz.*sin(alphaxmin).*sin(theta)+Cx;
+
+zlocxmin=Rx.*cos(alphaxmin).*sin(theta)+Rz.*sin(alphaxmin).*cos(theta)+Cz;
+
+ang=deg2rad(35);
+zr=zlocxmin-(xmin*tan(ang));
+
+LRz=[zr,zlocxmin];
+LRx=[0,xmin];
+
+c=linspace(0,980,100);
+
+%z1=0.12213.*c+801.68140; % equation for top complience boundary line
+
+%v=1.4282.*c-345.3256;
 
 
-%Px=[max(max(x))-11000,max(max(x))]
-%Pz=[
-
+hold on;
+axis equal;
+grid on;
+plot(i,Ii,"color",'r','lineWidth',5,";Group 1 Intrumentation;");
+plot(LPx,LPz,"color",'b',"linestyle","--",";Boundary of Non-complience;");
+plot(x,z,'lineWidth',2,'color','k')
+plot(LRx,LRz,"color",'b',"linestyle","--");
+%plot(c,z1,"color",'k');
+%plot(c,v,"color",'k');
+xlim([0 2000]);
+ylim([0 2000]);
