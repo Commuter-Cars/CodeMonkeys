@@ -11,7 +11,7 @@
 % x=13.49 from x=0 to bottom of instrumentation
 % x=12.72 from x=0 top of instramentaion
 clear all;
-%clc;
+clc;
 
 H30=input("Choose the H30 value you wish to Evaluate ") % Prompt user for input on 
 % H30 value, 340 mininmum, and 440 maximum
@@ -120,7 +120,7 @@ zr=zlocxmin-(xmin*tan(ang));
 LRz=[zr,zlocxmin];
 LRx=[0,xmin];
 
-c=linspace(0,980,100);
+%c=linspace(0,980,100);
 
 %z1=0.12213.*c+801.68140; % equation for top complience boundary line
 
@@ -136,5 +136,7 @@ plot(x,z,'lineWidth',2,'color','k')
 plot(LRx,LRz,"color",'b',"linestyle","--");
 %plot(c,z1,"color",'k');
 %plot(c,v,"color",'k');
-xlim([0 2000]);
-ylim([0 2000]);
+xlim([0 1500]);
+ylim([0 1500]);
+xlabel("X mm");
+ylabel("Z mm");
