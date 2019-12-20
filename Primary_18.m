@@ -10,11 +10,15 @@
 % z= 27.9 from z=0 to top of instramentation
 % x=13.49 from x=0 to bottom of instrumentation
 % x=12.72 from x=0 top of instramentaion
+% This code checks for complience of instrumentation in the cabs side view
+
 clear all;
 clc;
 
 H30=input("Choose the H30 value you wish to Evaluate ") % Prompt user for input on 
-% H30 value, 340 mininmum, and 440 maximum
+% H30 value, 340 mininmum, and 440 maximum Note: I think that I will claime that
+% The tangos H30 value is 380mm. a little lower than measured, but adds a buffer
+% zone of clear compliance.
 
 H30cm=H30/10;
 
