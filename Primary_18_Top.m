@@ -75,7 +75,7 @@ Cy1=32.5;
 
 Cy2=-32.5;
 
-theta=deg2rad(6.4); % Specifies the Tilt angle of th Eyellipes from the horizontal
+theta=deg2rad(0); % Specifies the Tilt angle of th Eyellipes from the horizontal
 
 alpha=linspace(0,2*pi,1000);
 
@@ -89,3 +89,44 @@ y1=Rx.*cos(alpha).*sin(theta)+Ry.*sin(alpha).*cos(theta)+Cy1;
 
 y2=Rx.*cos(alpha).*sin(theta)+Ry.*sin(alpha).*cos(theta)+Cy2;
 
+Ixloc=342.646; % Specifies the location of the instramentation in the x
+
+% Specifies the end points of the instramentation in the y axis.
+Iyloc1=-78.2365;
+Iyloc2=78.2365;
+
+Ex1=32.5;
+Ex2=-32.5;
+ang1=deg2rad(30);
+ang2=deg2rad(20);
+
+xminloc=min(min(x));
+
+Y12=Ex1+(xminloc/tan(ang1));
+Y21=Ex2-(xminloc/tan(ang2));
+
+
+Ix=[342.646,342.646];
+Iy=[-78.2365,78.2365];
+
+
+X=[xminloc,0];
+
+Y1=[Ex1,Y12];
+Y2=[Ex2,Y21];
+
+
+hold on;
+grid on;
+axis equal;
+
+plot(y1,x,'lineWidth',2,'color','k',y2,x,'lineWidth',2,'color','k');
+plot(Iy,Ix,"color",'r','lineWidth',5,";Group 1 Intrumentation;");
+plot(Y1,X,"color",'b',"linestyle","--",";Boundary of Non-complience;");
+plot(Y2,X,"color",'b',"linestyle","--");
+
+
+xlim([-600 600]);
+ylim([0 1200]);
+xlabel("Y mm");
+ylabel("X mm");
