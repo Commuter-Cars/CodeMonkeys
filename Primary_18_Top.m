@@ -5,7 +5,7 @@
 % at the front extreme of the cab beyoned the accelerator and break pedal. Also note
 % that since we are using the floor as the z=0 reference, the H30 values also corresponed
 % to the H70 value for z location of the SgRP, definatly not standard practice, however
-% very convienent in our case. All this is related in the 2d plane side view of the 
+% very convienent in our case. All this is related in the 2d plane top view of the 
 % Tango cab
 % z=24.6966 from z=0 to bottom of instramentation
 % z= 27.9 from z=0 to top of instramentation
@@ -17,9 +17,7 @@ clear all;
 clc;
 
 H30=input("Choose the H30 value you wish to Evaluate ") % Prompt user for input on 
-% H30 value, 340 mininmum, and 440 maximum Note: I think that I will claime that
-% The tangos H30 value is 380mm. a little lower than measured, but adds a buffer
-% zone of clear compliance.
+% H30 value, 340 mininmum, and 440 maximum Note: The tangos H30 value is 380mm.
 
 H30cm=H30/10;
 
@@ -125,8 +123,9 @@ plot(Iy,Ix,"color",'r','lineWidth',5,";Group 1 Intrumentation;");
 plot(Y1,X,"color",'b',"linestyle","--",";Boundary of Non-complience;");
 plot(Y2,X,"color",'b',"linestyle","--");
 
-
+title("95th Percentile Eyellipes and Group I Instramentation Tango Cab Top View");
 xlim([-600 600]);
 ylim([0 1200]);
 xlabel("Y mm");
 ylabel("X mm");
+saveas(1,"ADR18fig2","jpg")
