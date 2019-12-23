@@ -144,3 +144,5 @@ xlim([0 1500]);
 ylim([0 1500]);
 xlabel("X mm");
 ylabel("Z mm");
+title("95th Percentile Eyellipes and Group I Instramentation Tango Cab Side View");
+saveas(1,"ADR18fig1","jpg")
